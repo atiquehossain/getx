@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx/Controller/counter_controllar.dart';
+
+import 'counter_controllar.dart';
 
 void main() {
   runApp(MyApp());
@@ -32,42 +33,20 @@ class HomeView extends StatelessWidget {
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          GetBuilder<CounterController>(
-              id: "up1",
-              builder: (controller) {
-                print("Update One");
-                return Text(
-                  "Data is " + controller.count.toString(),
-                  style: TextStyle(color: Colors.blue),
-                );
-              }),
-          SizedBox(
-            height: 10,
-          ),
-          GetBuilder<CounterController>(
-              id: "up2",
-              builder: (controller) {
-                print("Update two");
-                return Text(
-                  "Data is " + controller.count2.toString(),
-                  style: TextStyle(color: Colors.blue),
-                );
-              }),
-          SizedBox(
-            height: 10,
-          ),
-          GetBuilder<CounterController>(
-              id: "up3",
-              builder: (controller) {
-                print("Update three");
-                return Text(
-                  "Data is " + controller.count3.toString(),
-                  style: TextStyle(color: Colors.blue),
-                );
-              }),
-          SizedBox(
-            height: 24,
-          ),
+          Obx(() => Text(
+                "Data is " + dependency.count.toString(),
+                style: TextStyle(color: Colors.blue),
+              )),
+          Obx(() => Text(
+                "Data is " + dependency.count2.toString(),
+                style: TextStyle(color: Colors.blue),
+              )),
+          Obx(() => Text(
+                "Data is " + dependency.count3.toString(),
+                style: TextStyle(color: Colors.blue),
+              )),
+
+          SizedBox(height: 40,),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
